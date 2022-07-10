@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { spotifyApi, setToken } from "../services/authSpotify"
 import Login from "./Login";
 
-const Dashboard = ({token}) => {
-
+const Dashboard = () => {
+  const token = JSON.parse(localStorage.getItem('token'));
   useEffect(() => {
     setToken(token.access_token);
     //here searchbar/navbar

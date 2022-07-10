@@ -3,7 +3,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 const credentials = {
     clientId: "f1863cf3c57e4ada8b92608a497f87d5",
     clientSecret: "1929e4d05715484187a5fb1ad0f3945c",
-    redirectUri: "http://localhost:3000/",
+    redirectUri: "http://localhost:3000/dashboard",
 };
 
 const spotifyApi = new SpotifyWebApi(credentials)

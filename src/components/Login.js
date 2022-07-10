@@ -1,7 +1,10 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { loginUrl } from "../spotify";
+import { useEffect } from "react";
+import { getToken, setToken } from '../services/authSpotify'
 
+const code = new URLSearchParams(window.location.search).get('code')
 const useStyles = makeStyles({
     login: {
         display: 'grid',
@@ -30,6 +33,21 @@ const useStyles = makeStyles({
     },
 });
 function Login() {
+    const storedAccessData = localStorage.getItem('token');
+    const accessTokenObj = storedAccessData ? JSON.parse(storedAccessData) : {}
+    //logout localStorage.removeItem('token')
+    useEffect(() => {
+        if(accessTokenObj.access_token){
+        setToken(accessTokenObj.access_token);
+        }
+        else {
+        getToken().then(tokenObj => {
+            localStorage.setItem('token', JSON.stringify(tokenObj))
+            setToken(accessTokenObj.access_token);
+        })
+        }
+    }, [])
+
     const classes = useStyles()
     return (
         <div className={classes.login}>

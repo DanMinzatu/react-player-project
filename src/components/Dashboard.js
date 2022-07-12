@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { spotifyApi, setToken } from "../services/authSpotify"
-import Login from "./Login";
+import Menu from './menu/Menu'
+import {Outlet} from "react-router-dom";
 
 const Dashboard = () => {
   const token = JSON.parse(localStorage.getItem('token'));
@@ -21,6 +22,8 @@ const Dashboard = () => {
   return (
     <div>
       <p>Dashboard</p>
+      <Menu />
+      <Outlet />
     </div>
   );
 };

@@ -12,25 +12,27 @@ import {
   Link,
   Navigate
 } from "react-router-dom";
+import Feed from './components/Feed'
+import Trending from './components/Trending'
+import Player from './components/Player'
 
 function App() {
 
   const isAuthenticated = localStorage.getItem('token') ? true : false;
 
   return (
-    // <div className="app">
-    //   <p>Login</p>
-    //   {code ? <Dashboard code={code} /> : <Login />}
-    //   <Dashboard token={accessTokenObj}/>
-    // </div>
       <Router>
         <Routes>
-         <Route exact path="/" element={!isAuthenticated ? 
+          <Route exact path="/" element={!isAuthenticated ?
               <Navigate to="/login"/> :
               <Navigate to="/dashboard"/>}
-          />
+           />
           <Route exact path="/login" element={<Login/>}/>
-          <Route exact path="/dashboard" element={<Dashboard/>} onEnter={requireAuth}/>
+          <Route exact path="/dashboard" element={<Dashboard/>} onEnter={requireAuth}>
+              <Route exact path="/dashboard/feed" element={<Feed/>} onEnter={requireAuth}/>
+              <Route exact path="/dashboard/trending" element={<Trending/>} onEnter={requireAuth}/>
+              <Route exact path="/dashboard/player" element={<Player/>} onEnter={requireAuth}/>
+          </Route>
         </Routes>
       </Router>
   );

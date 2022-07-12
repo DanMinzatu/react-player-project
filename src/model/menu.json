@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Feed",
+        "icon": "some-icon",
+        "link": "feed"
+    },
+    {
+        "name": "Trending",
+        "icon": "some-icon",
+        "link": "trending"
+    },
+    {
+        "name": "Player",
+        "icon": "some-icon",
+        "link": "player"
+    },
+    {
+        "name": "Favorites",
+        "icon": "some-icon",
+        "link": "trending"
+    },
+    {
+        "name": "Library",
+        "icon": "some-icon",
+        "link": "trending"
+    }
+]
